@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.js' %}"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+<nav class="navbar bg-body-tertiary">
+    <div class="container">
+        <a href="{% url 'index' %}" class="navbar-brand text-danger">Cakery&Bakery</a>
+        <form class="d-flex" role="search">
+            <a href="#" style="margin-left: 10px;text-decoration: none;" class="text-muted">Home</a>
+            <a href="#" style="margin-left: 10px;text-decoration: none;" class="text-muted">About</a>
+            <a href="{% url 'add' %}" style="margin-left: 10px;text-decoration: none;" class="text-dark">Add</a>
+            <a href="#" style="margin-left: 10px;text-decoration: none;" class="text-muted">Pricing</a>
+        </form>
+    </div>
+</nav>
+
+<div class="container p-3">
+    <h1 class="text-center text-danger">Add new cake</h1>
+    <div class="container">
+        <form action="" method="post" enctype="multipart/form-data" style="width: 400px; margin: 0 auto">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-danger w-100">Add</button>
+        </form>
+    </div>
+
+</div>
+
+<footer class="bg-danger p-1">
+    <nav class="navbar">
+        <div class="container">
+            <a class="navbar-brand text-white" style="font-size: 15px">Copyright @ HCI 2025</a>
+            <form class="d-flex" role="search">
+                <a href="#" style="margin-left: 10px; color: white">Privacy</a>
+                <a href="#" style="margin-left: 10px; color: white">Terms</a>
+                <a href="{% url 'add' %}" style="margin-left: 10px; color: white">Add</a>
+            </form>
+        </div>
+    </nav>
+</footer>
+</body>
+</html>

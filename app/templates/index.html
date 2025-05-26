@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.js' %}"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+<nav class="navbar bg-body-tertiary">
+    <div class="container">
+        <a href="{% url 'index' %}" class="navbar-brand text-danger">Cakery&Bakery</a>
+        <form class="d-flex" role="search">
+            <a href="#" style="margin-left: 10px;text-decoration: none;" class="text-muted">Home</a>
+            <a href="#" style="margin-left: 10px;text-decoration: none;" class="text-muted">About</a>
+            <a href="{% url 'add' %}" style="margin-left: 10px;text-decoration: none;" class="text-dark">Add</a>
+            <a href="#" style="margin-left: 10px;text-decoration: none;" class="text-muted">Pricing</a>
+        </form>
+    </div>
+</nav>
+
+<div class="section-one bg-danger p-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 text-white mt-5">
+                <h1>Explore the wonderland of tastes!</h1>
+                <p>Assignment for HCI Exam in January 2025</p>
+                <div class="d-flex justify-content">
+                    <button class="btn btn-light">Get Started</button>
+                    <button class="btn btn-danger border-white" style="margin-left: 10px">Learn More</button>
+                </div>
+            </div>
+            <div class="col-6">
+                <img src="{% static 'main.png' %}" alt="cover" style="width: 600px" class="rounded-5">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section-two bg-emphasis p-5">
+    <div class="text-center container" style="width: 400px">
+        <p>"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
+            electronic typesetting, remaining essentially unchanged. "</p>
+        <h6>Joe <span class="text-primary">/</span> CEO of Cakery&Bakery</h6>
+    </div>
+</div>
+
+<div class="section-three p-4">
+    <div class="container">
+        <h1 class="text-danger text-center">Products</h1>
+        <p class="text-center text-secondary">Add more products in the edit form!</p>
+        <div class="row fullwidth align-items-stretch">
+            {% for cake in cakes %}
+                <div class="col-4">
+                    <div class="card h-150 w-100 shadow-lg p-3 mb-5 bg-body-tertiary rounded border-0"
+                         style="width: 18rem; height: 400px">
+                        <img src="{{ MEDIA_URL }}{{ cake.image.url }}" class="card-img-top" alt="..."
+                             style="height: 200px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ cake.name }}</h5>
+                            <p class="card-text">{{ cake.description }}</p>
+                            <div class="d-flex justify-content">
+                                <img src="{{ cake.baker.image.url }}" alt="logo" class="rounded-5">
+                                <p style="font-weight: bold; margin-left: 10px">{{ cake.baker.name }} {{ cake.baker.surname }}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<footer class="bg-danger p-1">
+    <nav class="navbar">
+        <div class="container">
+            <a class="navbar-brand text-white" style="font-size: 15px">Copyright @ HCI 2025</a>
+            <form class="d-flex" role="search">
+                <a href="#" style="margin-left: 10px; color: white">Privacy</a>
+                <a href="#" style="margin-left: 10px; color: white">Terms</a>
+                <a href="{% url 'add' %}" style="margin-left: 10px; color: white">Add</a>
+            </form>
+        </div>
+    </nav>
+</footer>
+</body>
+</html>
